@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-radio-group [(ngModel)]="selectedStatus" class="filter" aria-label="Select an option">
+    <mat-radio-button (change)="onChangeStatus($event.value)" *ngFor="let status of allStatus" [value]="status">{{status}}</mat-radio-button>
+  </mat-radio-group>
+
+  <div class="pet-wrapper">
+    <mat-progress-spinner color="accent" class="loader" mode="indeterminate" *ngIf="!(pets$ | async)"></mat-progress-spinner>
+
+    <mat-card
+    *ngFor="let pet of (pets$ | async)"
+    (click)="showPetDetails(pet)"
+    class="card">
+      <mat-card-title-group>
+        <mat-card-title>{{pet.name}}</mat-card-title>
+        <div class="status">{{pet.status}}</div>
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+</div>

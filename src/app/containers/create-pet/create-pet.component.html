@@ -1,0 +1,80 @@
+<div class="wrapper">
+    <h1>Create Pet</h1>
+    <mat-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="createPetForm" editable="false">
+            <ng-template matStepLabel>Pet Info</ng-template>
+            <form [formGroup]="createPetForm" (ngSubmit)="createPetForm.valid && submitCreatePet()" class="my-form">
+                <mat-card class="my-card">
+                  <mat-card-content>
+                        <mat-form-field class="full-width">
+                           <mat-label>Name</mat-label>
+                           <input matInput formControlName="name" name="name" required>
+                           <mat-error *ngIf="createPetForm.get('name')?.hasError('required')">Name is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Select Status</mat-label>
+                            <mat-select formControlName="status" name="status">
+                              <mat-option *ngFor="let stat of status" [value]="stat">{{stat}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="createPetForm.get('status')?.hasError('required')">status is required</mat-error>
+                        </mat-form-field>
+                  </mat-card-content>
+                  <mat-card-actions>
+                     <button mat-raised-button type="submit" color="primary">Next</button>
+                  </mat-card-actions>
+               </mat-card>
+              </form>
+        </mat-step>
+
+        <mat-step [stepControl]="petImageForm" editable="false">
+            <ng-template matStepLabel>Upload Image</ng-template>
+            <form [formGroup]="petImageForm" (ngSubmit)="petImageForm.valid && uploadPetImage()" class="my-form">
+                <mat-card class="my-card">
+                  <mat-card-content>
+                    <input
+                      formControlName="file"
+                      type="file"
+                      class="file-upload"
+                      (change)="onFileChange($event)"
+                    >
+                    <div *ngIf="petImageForm.get('file')?.hasError('required')">image is required</div>
+                  </mat-card-content>
+                  <mat-card-actions>
+                     <button mat-raised-button type="submit" color="primary">Submit</button>
+                  </mat-card-actions>
+               </mat-card>
+              </form>
+        </mat-step>
+        <!-- <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step> -->
+        <mat-step>
+          <ng-template matStepLabel>Finish</ng-template>
+          <div class="result">
+            <p>Pet created successfully</p>
+            <div>
+              <a routerLink="/pet-list" mat-raised-button color="primary">View all Pets</a>
+            </div>
+          </div>
+        </mat-step>
+      </mat-stepper>
+</div>
+
+
+<!--
+
+{
+    "name": "cat",
+    "status": "available"
+  } -->

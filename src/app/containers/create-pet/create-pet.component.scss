@@ -1,0 +1,32 @@
+
+ ::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}
+
+.mat-step-header {
+    pointer-events: none !important;
+}
+
+.wrapper{
+    min-width: 150px;
+    max-width: 500px;
+    margin: 1rem auto 0;
+    h1 {
+        font-weight: bold;
+        text-align: center;
+    }
+  }
+  
+.full-width {
+    width: 100%;
+}
+
+.file-upload {
+    margin-top: 2rem;
+}
+
+.result {
+    margin-top: 2rem;
+    text-align: center;
+}
+  

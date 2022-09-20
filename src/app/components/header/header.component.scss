@@ -1,0 +1,10 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.menu {
+  width: 100px;
+  padding: 0 1rem;
+  &.active {
+    color: purple;
+  }
+}

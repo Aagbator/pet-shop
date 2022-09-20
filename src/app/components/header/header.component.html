@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>Pet Shop</span>
+    <span class="example-spacer"></span>
+
+    <div *ngIf="(isLoggedIn$ | async)">
+      <a [routerLink]="['/create']" routerLinkActive="active"  mat-button class="menu" aria-label="Create">
+        Create Pet
+      </a>
+      <a [routerLink]="['/pet-list']" routerLinkActive="active" mat-button class="menu" aria-label="List">
+        List
+      </a>
+      <a (click)="authService.logout()" mat-button class="menu" aria-label="Login">
+        Logout
+      </a>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
